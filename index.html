@@ -6,10 +6,26 @@
     <title>Florian-Jungwirth</title>
     <style>
         body {
-            background: url("images/background.jpg") no-repeat center center fixed;
-            background-size: cover;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+        }
+
+        #background {
+            width: 100vw;
+            height: 100vh;
+            background: url(images/background.jpg);
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+            z-index: -100;
+            position: absolute;
+        }
+
+        #blur {
+            filter: blur(10px);
+            z-index: -110;
+            position: absolute;
         }
 
         #wrapper {
@@ -21,20 +37,25 @@
         }
 
         a {
-            background: white;
-            color: black;
+            background: grey;
+            color: white;
             text-decoration-line: none;
             font-size: 4vh;
             border-radius: 200px;
-            padding: 1.5vh;
+            padding: 1.7vh;
         }
 
         a:hover {
             background-color: cadetblue;
+            box-shadow: inset 0px 0px 5px black;
+
         }
     </style>
 </head>
 <body>
+    <div id="blur">
+        <div id="background"></div>
+    </div>
     <div id="wrapper">
         <a href="wuerfel/wuerfel.html">Würfel</a>
     </div>
