@@ -265,49 +265,6 @@ table {
     padding-left: 20%;
 }
 
-
-/*Mainbox Unterseite Meine Arbeiten*/
-#mainboxU2 {
-    margin-bottom: 40px;
-    width: 100%;
-    min-height: 100px;
-    padding-top: 40px;
-}
-
-#contentU4 {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 80px;
-    margin-bottom: 80px;
-}
-
-#contentU4 a {
-    display: block;
-    margin-bottom: 20px;
-    text-decoration: none;
-    color: white;
-    background: grey;
-    text-align: center;
-    width: 100%;
-    border-radius: 10px;
-    font-size: 20px;
-}
-
-#contentU4 a:hover {
-    background: #5e2028;
-}
-
-#contentU4 h1 {
-    color: darkgoldenrod;
-    font-size: 50px;
-    text-align: center;
-    font-weight: bolder;
-    color: #5e2028;
-    border: 6px solid grey;
-    border-radius: 30px;
-}
-
 /*Content Unterseite Bildergalerie*/
 
 #contentU2 h1 {
@@ -348,32 +305,6 @@ table {
     display: block;
     width: 60%;
     height: auto;
-}
-/*Mainbox Unterseite Kontakt*/
-
-#mainboxU3 {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 800px;
-    padding-top: 8%;
-}
-
-#contentU3 {
-    margin-top: 40px;
-    padding-bottom: 40px;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 90%;
-}
-
-#contentU3 img {
-    height: 150px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
 }
 
 /*Hervorheben von Textpassagen auf der Unterseite Über mich*/
