@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Würfel</title>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script src="wuerfel.js" defer>
+	</script>
+
+</head>
+
+    <body>
+
+		<div id="player1">
+			<h1>Player 1</h1>
+			<div id="button" onclick="neuerWurf1()">Jetzt würfeln</div>
+			
+			<div id="erg1"></div>
+			<br>
+			<div id="cubeImage1"><img name="first" src="images/PinClipart_cubeSet.png" alt="Würfel"></div>
+			<br>
+			<div id="winsPlayer1">Siege: 0</div>
+		</div><div id="player2">
+			<h1>Player 2</h1>
+			<div id="button" onclick="neuerWurf2()">Jetzt würfeln</div>
+
+			<div id="erg2"></div>
+			<br>
+			<div id="cubeImage2"><img name="second" src="images/PinClipart_cubeSet.png" alt="Würfel"></div>
+			<br>
+			<div id="winsPlayer2">Siege: 0</div>
+		</div>
+
+		<div id="winner"></div>
+
+		<div id="home"><a href="../index.html">Home</a></div>
+
+    </body>
+
+</html>
+
