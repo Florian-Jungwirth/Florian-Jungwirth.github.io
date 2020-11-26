@@ -51,21 +51,6 @@ header{
     color: white;
 }
 
-.box_einspaltig {
-    grid-area: urbanStrokes;
-    width: 100vw;
-    height: 655px;
-    background-image: url(images/hero.jpg);
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    background-size: cover;
-    padding: 150px 0;
-    text-align: center;
-}
-
 body {
 	margin-left: auto;
 	margin-right: auto;
