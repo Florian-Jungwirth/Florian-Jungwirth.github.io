@@ -1,0 +1,203 @@
+body {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(135deg, #e1e1e1 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, #e1e1e1 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg,#e1e1e1 25%, transparent 25%),
+    linear-gradient(45deg, #e1e1e1 25%, transparent 25%);
+    background-size: 100px 100px;
+    background-color:#cfd8dc;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: white;
+    font-size: 8vh;
+    margin-bottom: 1vh;
+    text-shadow: 0 0 10px black;
+}
+
+#slideshow {
+    width: 100vw;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 5vh;
+}
+
+#slideshow > div {
+    display: flex;
+    justify-content: center;
+    padding: 2vw;
+    box-sizing: border-box;
+}
+
+#slideshow img {
+    width: 100%;
+    object-fit: contain;
+}
+
+#first {
+    width: 12vw;
+}
+
+#second {
+    width: 22vw;
+}
+
+#third {
+    width: 32vw;
+}
+
+#fourth {
+    width: 22vw;
+}
+
+#fifth {
+    width: 12vw;
+}
+
+#first img {
+    opacity: 0.5;
+    transform: perspective(200px) rotateY(-50deg)
+}
+
+#second img {
+    opacity: 0.75;
+    transform: perspective(300px) rotateY(-5deg);
+}
+
+#fourth img {
+    opacity: 0.75;
+    transform: perspective(300px) rotateY(5deg);
+}
+
+#fifth img {
+    opacity: 0.5;
+    transform: perspective(200px) rotateY(50deg)
+}
+
+#third img {
+    box-shadow: 0 0 20px black;
+    border: 5px solid white;
+}
+
+#left, #right {
+    background-color:dimgray;
+    width: 9vw;
+    height: 5vw;
+    display: inline-block;
+    margin: 0 3vw;
+    transition: all 0.5s;
+}
+
+#left:hover {
+    background-color:black;
+    animation: left 0.5s;
+}
+
+#right:hover {
+    background-color:black;
+    animation: right 0.5s;
+}
+
+#buttons div {
+    display: inline-block;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 2560px;
+    border: none;
+    margin: 0.5vw;
+    background-color: black;
+    opacity: 0.3;
+}
+
+#buttons div.active {
+    opacity: 1;
+}
+
+#description {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 9px;
+    width: 15vw;
+    height: 1em;
+    position: absolute;
+    margin-top: 5px;
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 2vh;
+}
+
+@keyframes right {
+    0% {
+        transform: translateX(0vw);
+    }
+    20% {
+        transform: translateX(0vw);
+    }
+    40% {
+        transform: translateX(2vw);
+    } 
+    60% {
+        transform: translateX(1vw);
+    }
+    80% {
+        transform: translateX(2vw);
+    }
+    100% {
+        transform: translateX(0vw);
+    }  
+}
+
+@keyframes left {
+    0% {
+        transform: translateX(0vw);
+    }
+    20% {
+        transform: translateX(0vw);
+    }
+    40% {
+        transform: translateX(-2vw);
+    } 
+    60% {
+        transform: translateX(-1vw);
+    }
+    80% {
+        transform: translateX(-2vw);
+    }
+    100% {
+        transform: translateX(0vw);
+    }  
+}
+
+nav {
+    margin-top: 5vh;
+}
+
+#left {
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+}
+
+#right {
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+
+#startseite {
+    height: 2vh;
+    color: white;
+    background-color: black;
+    text-decoration-line: none;
+    padding: 1vh;
+    position: absolute;
+    width: 10vw;
+    left: 45vw;
+    top: 1vh;
+    border-radius: 30px;
+}
+
+#startseite:hover {
+    color: black;
+    background-color: white;
+}
