@@ -1,0 +1,225 @@
+
+/* CSS Document */
+
+html * {
+	padding: 0;
+	margin: 0;
+	font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+
+}
+
+header{
+	display: flex;
+	flex-direction: row;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.logo {
+    width: 25vw;
+    padding: 1em;
+}
+
+.logo img {
+    width: 10em;
+}
+
+.top_nav {
+	padding: 1.3em;
+    width: 75vw;
+    text-align: right;
+    font-size: 90%;
+}
+
+.top_nav a {
+	position: relative;
+	padding: 0.5em 1em;
+    background-color: gainsboro;
+    text-decoration-line: none;
+    color: black;
+    background: linear-gradient(to right, gainsboro 100%, transparent);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: background-size 0.2s, box-shadow 0.2s 0.2s, color 0.2s 0.1s;
+    box-shadow: inset 0px 0px 0px 0px black;
+}
+
+.top_nav a:hover {
+    background-size: 0% 100%;
+    box-shadow: inset 0px 0px 0px 100px black;
+    color: white;
+}
+
+body {
+	margin-left: auto;
+	margin-right: auto;
+	background: #e6f4f8;
+    width: 100vw;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-areas:
+      "urbanStrokes urbanStrokes urbanStrokes urbanStrokes"
+      "left left right right"
+      "box1_vierspaltig box2_vierspaltig box3_vierspaltig box4_vierspaltig"
+      "footer footer footer footer";
+    grid-auto-columns: 24.625vw;
+    width: 100%;
+    grid-gap: 0.5vw;
+}
+
+.box1_zweispaltig {
+    grid-area: left;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-size: cover;
+    text-align: center;
+    padding: 50px 0;
+    background-color: rgb(45,44,52);
+    margin-top: -0.5vw;
+}
+
+.box2_zweispaltig {
+    grid-area: right;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-size: cover;
+    padding: 50px 0;
+    background-color: rgb(184, 167, 141);
+    margin-top: -0.5vw;
+    text-align: center;
+}
+
+.box1_vierspaltig {
+    grid-area: box1_vierspaltig;
+    width: 100%;
+}
+
+.box1_vierspaltig img {
+    width: 100%;
+}
+
+.box2_vierspaltig {
+    grid-area: box2_vierspaltig;
+    width: 100%;
+}
+
+.box2_vierspaltig img {
+    width: 100%;
+}
+
+.box3_vierspaltig {
+    grid-area: box3_vierspaltig;
+    width: 100%;
+}
+
+.box3_vierspaltig img {
+    width: 100%;
+}
+
+
+.box4_vierspaltig {
+    grid-area: box4_vierspaltig;
+    width: 100%;
+}
+
+.box4_vierspaltig img {
+    width: 100%;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+    margin-top: 2em;
+}
+
+h1 {
+	font-size: 400%;
+	text-transform: uppercase;
+	font-weight: 600;
+	color:white;
+	margin: 4vw 0;
+}
+
+h2 {
+	font-size: 200%;
+	text-transform: uppercase;
+	font-weight: 600;
+	color:white;
+	margin: 2vw 0;
+}
+
+h3 {
+	font-size: 100%;
+	text-transform: uppercase;
+	font-weight: 600;
+	color:white;
+	margin: 1vw 0;
+}
+
+
+p {
+	font-size: 80%;
+	font-weight: 400;
+}
+
+.button {
+    color: white;
+    text-decoration-line: none;
+    border: 2px solid white;
+    border-radius: 100px;
+    padding: 0.5em;
+    font-weight: lighter;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 100%, transparent);
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+    transition: background-size 0.5s, text-shadow 1s;
+}
+
+.button:hover {
+  background-size: 100% 100%;
+    text-shadow: 1px 1px black;
+}
+
+
+
+@media all and (max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+    
+    .logo {
+        width: 100%;
+        display: flex;
+        padding: 2em 0 0;
+    }
+    
+    .logo img {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .top_nav {
+        width: 100%;
+        padding: 2em 0 0;
+    }
+    
+    .top_nav a {
+        width: 100%;
+        display: block;
+        margin: 0.5em 0;
+        text-align: center;
+    }
+
+
+}
+ 
