@@ -5,10 +5,12 @@ function changeMenu(x) {
     if(x.classList.value === 'change') {
         navContent.style.opacity = 1;
         navContent.style.zIndex = 9;
+        navContent.style.position = 'sticky';
         document.body.style.overflow = 'hidden';
     } else {
         navContent.style.opacity = 0;
         navContent.style.zIndex = -9;
+        navContent.style.position = 'absolute';
         document.body.style.overflow = 'visible';
     }
 }

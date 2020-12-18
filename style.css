@@ -57,7 +57,7 @@ nav {
     background-color: black;
     position: absolute;
     top: 0;
-    z-index: -5;
+    z-index: -9;
     transition: all 0.5s;
 }
 
