@@ -1,4 +1,5 @@
 let navContent = document.getElementById('navContent');
+let scrollDown = document.getElementById('scrollDown');
 
 function changeMenu(x) {
     x.classList.toggle('change');
@@ -7,17 +8,26 @@ function changeMenu(x) {
         navContent.style.zIndex = 9;
         navContent.style.position = 'sticky';
         document.body.style.overflow = 'hidden';
+        scrollDown.style.zIndex = -10;
     } else {
         navContent.style.opacity = 0;
         navContent.style.zIndex = -9;
         navContent.style.position = 'absolute';
         document.body.style.overflow = 'visible';
+        scrollDown.style.zIndex = 10;
     }
 }
  
 window.addEventListener('load', function() {
     window.onscroll = function () {
-        /*let element = document.getElementById('try');
+
+        if(window.pageYOffset > 0) {
+            scrollDown.style.opacity = 0;
+        } else {
+            scrollDown.style.opacity = 1;
+        }
+
+        /*let element = document.getElementById('srollDown');
         let boxCoordinate = element.getBoundingClientRect().top;
 
         if(boxCoordinate > 0) {
@@ -29,7 +39,7 @@ window.addEventListener('load', function() {
 
         console.log(boxCoordinate);*/
 
-        let element = document.getElementById('text');
+       /* let element = document.getElementById('text');
 
         if(window.pageYOffset < 10) {
             element.style.opacity = 1;
@@ -37,6 +47,6 @@ window.addEventListener('load', function() {
 
         if(window.pageYOffset > 0) {
             element.style.opacity -= 0.05;
-        }
+        }*/
     };
 });
