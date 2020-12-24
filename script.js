@@ -27,6 +27,7 @@ window.addEventListener('load', function() {
             scrollDown.style.opacity = 1;
         }
 
+
         /*let element = document.getElementById('srollDown');
         let boxCoordinate = element.getBoundingClientRect().top;
 
