@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Übung</title>
+    <title>Fotografie</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body style="background: url('images/hintergrund.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;">
     <nav onclick="changeMenu(this)">
         <div class="line1"></div>
         <div class="line2"></div>
@@ -19,9 +22,9 @@
 
     <div id="navContent">
         <div class="links">
-            <a href="#">Home</a>
-            <a href="#">First</a>
-            <a href="#">Second</a>
+            <a class="active" href="#">Home</a>
+            <a href="pages/gallerie.html">Gallerie</a>
+            <a href="pages/fotografen.html">Berühmte<br>Fotografen</a>
         </div>
     </div>
 
