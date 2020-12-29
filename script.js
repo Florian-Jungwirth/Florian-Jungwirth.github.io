@@ -21,10 +21,12 @@ function changeMenu(x) {
 window.addEventListener('load', function() {
     window.onscroll = function () {
 
-        if(window.pageYOffset > 0) {
-            scrollDown.style.opacity = 0;
-        } else {
+        if(window.pageYOffset < 100) {
             scrollDown.style.opacity = 1;
+            scrollDown.style.position = 'fixed';
+        } else {
+            scrollDown.style.opacity = 0;
+            scrollDown.style.position = 'absolute';
         }
 
 

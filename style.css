@@ -106,24 +106,26 @@ footer p {
 
 main {
     width: 100vw;
-    padding: 3vw;
+    padding: 3vw 3vw 0;
 }
 
-.box1 {
+.boxes {
     background-color: white;
-    padding: 3vh;
+    padding: 8vh;
+    margin: 6vh 0;
     border-radius: 3vh;
 }
 
 h2 {
     text-align: center;
     font-size: 5vh;
+    padding-bottom: 3vh;
 }
 
 h3 {
     text-decoration-line: underline;
-    padding-top: 3vw;
     font-size: 3vh;
+    padding-bottom: 1.5vh;
 }
 
 p {
@@ -138,11 +140,10 @@ footer {
     padding: 1em;
     width: 100vw;
     text-align: center;
-    margin-top: 5vh;
 }
 
 #scrollDown {
-    position: absolute;
+    position: fixed;
     width: 10%;
     left: 45%;
     height: 5vw;
@@ -181,4 +182,32 @@ footer {
 
 .box1 p {
     padding: 1vw;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(13deg, #782785 14%,#616cb8 64%);
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(13deg, #616CB8 14%,#782785 64%);
+}
+
+::-webkit-scrollbar-track{
+    background: #dbdbdb;
+}
+
+@media screen and (max-width: 1350px) {
+    .formatBox {
+        display: block;
+    }
+    
+    .right {
+        margin: 3vh 0;
+    }
 }
