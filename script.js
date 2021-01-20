@@ -8,7 +8,7 @@ function changeMenu(x) {
         navContent.style.zIndex = 9;
         navContent.style.position = 'sticky';
         document.body.style.overflow = 'hidden';
-        scrollDown.style.zIndex = -10;
+        if(scrollDown !== null) {scrollDown.style.zIndex = -10;}
     } else {
         navContent.style.opacity = 0;
         navContent.style.zIndex = -9;
