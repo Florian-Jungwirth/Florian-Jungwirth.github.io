@@ -21,35 +21,14 @@ function changeMenu(x) {
 window.addEventListener('load', function() {
     window.onscroll = function () {
 
-        if(window.pageYOffset < 100) {
-            scrollDown.style.opacity = 1;
-            scrollDown.style.position = 'fixed';
-        } else {
-            scrollDown.style.opacity = 0;
-            scrollDown.style.position = 'absolute';
+        if(scrollDown !== undefined) {
+            if(window.pageYOffset < 100) {
+                scrollDown.style.opacity = 1;
+                scrollDown.style.position = 'fixed';
+            } else {
+                scrollDown.style.opacity = 0;
+                scrollDown.style.position = 'absolute';
+            }
         }
-
-
-        /*let element = document.getElementById('srollDown');
-        let boxCoordinate = element.getBoundingClientRect().top;
-
-        if(boxCoordinate > 0) {
-            document.body.style.backgroundColor =  'white';
-        } else {
-            document.body.style.backgroundColor = 'black';
-        }
-
-
-        console.log(boxCoordinate);*/
-
-       /* let element = document.getElementById('text');
-
-        if(window.pageYOffset < 10) {
-            element.style.opacity = 1;
-        }
-
-        if(window.pageYOffset > 0) {
-            element.style.opacity -= 0.05;
-        }*/
     };
 });
