@@ -21,7 +21,7 @@ function changeMenu(x) {
 window.addEventListener('load', function() {
     window.onscroll = function () {
 
-        if(scrollDown !== undefined) {
+        if(scrollDown !== null) {
             if(window.pageYOffset < 100) {
                 scrollDown.style.opacity = 1;
                 scrollDown.style.position = 'fixed';
