@@ -12,10 +12,10 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    flex-direction: row;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .images img {
@@ -306,5 +306,21 @@ footer {
     
     .right {
         margin: 3vh 0;
+    }
+
+    .images div img {
+        width: 35%;
+        margin: 1.5em;
+    }
+
+    .images div {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .images div img {
+        width: 65%;
+        margin: 1.5em;
     }
 }
