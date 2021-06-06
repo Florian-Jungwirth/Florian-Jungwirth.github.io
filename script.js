@@ -6,5 +6,5 @@ function handleOrientation(event) {
     var beta     = event.beta;
     var gamma    = event.gamma;
   
-    document.body.innerHTML = absolute;
+    document.body.innerHTML = alpha;
   }
