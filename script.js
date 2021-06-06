@@ -6,5 +6,5 @@ function handleOrientation(event) {
     var beta     = event.beta;
     var gamma    = event.gamma;
   
-    document.body.innerHTML = `alpha: ${alpha}, beta: ${beta}, gamma: ${gamma}`;
+    document.body.innerHTML = `alpha: ${Math.round(alpha)}, beta: ${Math.round(beta)}, gamma: ${Math.round(gamma)}`;
   }
