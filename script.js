@@ -9,5 +9,5 @@ function handleOrientation(event) {
 
   box.innerHTML = `alpha: ${Math.round(alpha)}, beta: ${Math.round(beta)}, gamma: ${Math.round(gamma)}`;
 
-  box.style.transform = `rotateZ(${gamma}deg)`;
+  box.style.transform = `rotateZ(${-gamma}deg)`;
 }
