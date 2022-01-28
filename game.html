@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <style>
         body {
             margin: 0;
@@ -130,8 +130,8 @@
     <div id="gameOver">
         <h1>Game Over!</h1>
         <p id="lastScore"></p>
-        <button class="btn" onclick="window.location.replace('game.html')">&#8634; Play again</button>
-        <button class="btn" onclick="window.location.replace('settings.html')">&#x2302; Menu</button>
+        <button class="btn" onclick="window.location.replace('./game.html')">&#8634; Play again</button>
+        <button class="btn" onclick="window.location.replace('./settings.html')">&#x2302; Menu</button>
     </div>
 
     <div id="pauseWindow">
@@ -148,8 +148,8 @@
 
     </div>
 
-    <script src="/three.js"></script>
-    <script type="module" src="/GLTFLoader.js"></script>
+    <script src="./three.js"></script>
+    <script type="module" src="./GLTFLoader.js"></script>
     <script type="module">
         /**
          * Daten werden aus sessionstorage geladen und für spätere Verwendung gespeichert
@@ -174,10 +174,10 @@
 
 
         let audio = {
-            background: new Audio('/sounds/background.mp3'),
-            point: new Audio('/sounds/point.wav'),
-            gameOverSound: new Audio('/sounds/gameOver.wav'),
-            countdownSound: [new Audio('/sounds/countdown/1.mp3'), new Audio('/sounds/countdown/2.mp3'), new Audio('/sounds/countdown/3.mp3')]
+            background: new Audio('./sounds/background.mp3'),
+            point: new Audio('./sounds/point.wav'),
+            gameOverSound: new Audio('./sounds/gameOver.wav'),
+            countdownSound: [new Audio('./sounds/countdown/1.mp3'), new Audio('./sounds/countdown/2.mp3'), new Audio('./sounds/countdown/3.mp3')]
         };
 
         let speaker = document.querySelector('#speaker');
@@ -337,7 +337,7 @@
             let countdown = document.querySelector('#countdown');
 
             //Eventlistener für Button im Pausefenster
-            pauseMenu.addEventListener('click', () => { gameOver(); window.location.replace('settings.html'); });
+            pauseMenu.addEventListener('click', () => { gameOver(); window.location.replace('.settings.html'); });
 
             //Eventlistener für die Schrift rechts oben
             pause.addEventListener('click', () => { pauseFunction() });
@@ -435,7 +435,7 @@
 
             var spaceship;
             //Hier wird das Raumschiff geladen und die Größe gespeichert
-            loader.load(`${model}/scene.gltf`, function (gltf) {
+            loader.load(`./${model}/scene.gltf`, function (gltf) {
                 spaceship = gltf.scene;
 
                 var box = new THREE.Box3();
@@ -470,7 +470,7 @@
 
             var ring;
             //Hier wird der Ring geladen und die Größe gespeichert
-            loader.load("ring/scene.gltf", function (gltf) {
+            loader.load("./ring/scene.gltf", function (gltf) {
                 ring = gltf.scene;
 
                 var box = new THREE.Box3();
@@ -507,7 +507,7 @@
 
             var meteorite;
             //Hier wird der Meteorit geladen und die Größe gespeichert
-            loader.load("meteorite/scene.gltf", function (gltf) {
+            loader.load("./meteorite/scene.gltf", function (gltf) {
                 meteorite = gltf.scene;
 
                 var box = new THREE.Box3();
@@ -537,7 +537,7 @@
 
             //In den folgenden Zeilen werden Hintergrund, Kameraposition, Lichter und Kontrast angepasst
             const textureLoader = new THREE.TextureLoader();
-            const bgTexture = textureLoader.load(`${background}/background.jpg`);
+            const bgTexture = textureLoader.load(`./${background}/background.jpg`);
             scene.background = bgTexture;
             var light = new THREE.HemisphereLight(0xffffff, 0x000000, 5);
             scene.add(light);

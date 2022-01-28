@@ -297,29 +297,29 @@
 
     <div id="previewSpaceship">
         <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
-                src="spaceship/standard/scene.png"></div>
+                src="./spaceship/standard/scene.png"></div>
         <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
-                src="spaceship/deathrow/scene.png"></div>
+                src="./spaceship/deathrow/scene.png"></div>
         <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
-                src="spaceship/graySpaceship/scene.png"></div>
+                src="./spaceship/graySpaceship/scene.png"></div>
         <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
-                src="spaceship/paperPlane/scene.png"></div>
+                src="./spaceship/paperPlane/scene.png"></div>
         <button class="goBack" onclick="togglePreviewSpaceShipNav()">&#9665;</button>
     </div>
 
     <div id="previewBackground">
         <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
-                src="background/standard/background.jpg"></div>
+                src="./background/standard/background.jpg"></div>
         <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
-                src="background/galaxy/background.jpg"></div>
+                src="./background/galaxy/background.jpg"></div>
         <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
-                src="background/earth/background.jpg"></div>
+                src="./background/earth/background.jpg"></div>
         <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
-                src="background/tunnel/background.jpg"></div>
+                src="./background/tunnel/background.jpg"></div>
         <button class="goBack" onclick="togglePreviewBackgroundNav()">&#9665;</button>
     </div>
 
-    <button class="goBack" onclick="window.location.replace('index.html')">&#x2302;</button>
+    <button class="goBack" onclick="window.location.replace('./index.html')">&#x2302;</button>
 
 
     <div id="color">
@@ -334,7 +334,7 @@
 
     <script>
         function startGame() {
-            window.location.replace('game.html');
+            window.location.replace('./game.html');
             sessionStorage.volume = JSON.stringify(slider.value);
             sessionStorage.mute = JSON.stringify(mute);
         }
@@ -492,8 +492,8 @@
         }
     </script>
 
-    <script src="three.js"></script>
-    <script type="module" src="/GLTFLoader.js"></script>
+    <script src="./three.js"></script>
+    <script type="module" src="./GLTFLoader.js"></script>
     <script type="module">
 
         let preview1 = document.getElementById('preview1');
@@ -555,7 +555,7 @@
         }
         localStorage.players = JSON.stringify(players);
 
-        preview2.innerHTML += `<img id="previewImg" src="${playerInArray.backgroundDesign}/background.jpg">`;
+        preview2.innerHTML += `<img id="previewImg" src="./${playerInArray.backgroundDesign}/background.jpg">`;
         let picture = document.getElementById('previewImg');
         let can = document.getElementById('c');
 
@@ -606,7 +606,7 @@
         function resetFunction() {
             if (confirm('Are you sure you want to delete all saved Scores?')) {
                 localStorage.clear();
-                window.location.replace('index.html');
+                window.location.replace('./index.html');
             }
         }
 
@@ -616,7 +616,7 @@
         */
         let currentModel = JSON.parse(localStorage.players);
         currentModel = currentModel[playerInArrayNumber].spaceshipDesign;
-        load3dModel('c', `${currentModel}/scene.gltf`);
+        load3dModel('c', `./${currentModel}/scene.gltf`);
 
         import { GLTFLoader } from "./GLTFLoader.js";
 
