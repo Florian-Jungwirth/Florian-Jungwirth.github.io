@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <title>Settings</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        #highscoreList {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 80vw;
+            height: 55vh;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 0.5em;
+        }
+
+        main {
+            width: 100%;
+            max-height: 100%;
+            overflow-y: scroll;
+        }
+
+        #result {
+            width: 100%;
+        }
+
+        #result p {
+            width: 90%;
+            border-bottom: solid 1px black;
+            padding: 2em;
+            margin: 0;
+        }
+
+        button,
+        #reset h1 {
+            border: none;
+            background-color: teal;
+            padding: 1em;
+            margin-top: 4em;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover,
+        #reset h1:hover {
+            box-shadow: inset 0 0 5px 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .goBack {
+            position: absolute;
+            left: 0.5em;
+            top: 0.5em;
+            margin: 0;
+            font-size: 300%;
+            padding: 0 0.4em;
+        }
+
+        #current {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        #settings {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #preview1,
+        #preview2 {
+            width: 50%;
+            height: 40vh;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #preview2 img {
+            width: 50%;
+            border-radius: 10px;
+            border: 3px solid teal;
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        #preview2 p,
+        #preview1 p {
+            position: absolute;
+            font-size: 300%;
+            color: white;
+            text-shadow: 0px 0px 10px rgb(0, 0, 0);
+            transition: all 1s;
+            cursor: pointer;
+        }
+
+        #preview2:hover p,
+        #preview1:hover p {
+            transform: rotateX(360deg);
+            font-size: 500%;
+            color: red;
+        }
+
+        #preview2:hover img,
+        #preview1:hover #c {
+            box-shadow: 0px 3px 0px 2px rgba(0, 0, 0, 0.1), 0px 6px 0px 4px rgba(0, 0, 0, 0.1), 0px 9px 0px 6px rgba(0, 0, 0, 0.1), -50px -50px 0px -30px rgba(118, 255, 226, 0);
+        }
+
+
+        #c {
+            border: 3px solid teal;
+            border-radius: 10px;
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        #previewSpaceship,
+        #previewBackground {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 100000;
+            top: 0;
+            overflow-x: hidden;
+            transition: 0.5s;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        #previewBackground {
+            right: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #previewSpaceship {
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 50%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box img:hover {
+            box-shadow: 0px 3px 0px 2px rgba(255, 255, 255, 1), 0px 6px 0px 4px rgba(255, 255, 255, 0.8), 0px 9px 0px 6px rgba(255, 255, 255, 0.6), 0px 11px 0px 8px rgba(255, 255, 255, 0.4), 0px 13px 0px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .box img {
+            width: 50%;
+            border-radius: 10px;
+            border: 3px solid rgb(255, 255, 255);
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        #reset h1 {
+            padding: 0.3em;
+            margin: 0;
+        }
+
+        #positioning {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        #colorMode {
+            padding: 0.5em 0.8em;
+            font-size: 100%;
+            margin: 0;
+        }
+
+        #colorModePointer {
+            color: black;
+            margin-right: 1em;
+        }
+
+        #color {
+            font-size: 150%;
+            display: flex;
+            position: absolute;
+            top: 0em;
+            right: 1em;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        #speaker {
+            position: absolute;
+            bottom: 1em;
+            right: 1em;
+            font-size: 110%;
+        }
+
+        #speakerSlider,
+        #label {
+            position: absolute;
+            font-size: 110%;
+            bottom: 8em;
+            right: -0.5em;
+        }
+
+        #label {
+            bottom: 13em;
+            right: 2.2em;
+        }
+
+        #speakerSlider {
+            transform: rotate(270deg);
+        }
+
+        .speaerSliderNotDropped {
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            transform: rotate(270deg);
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #008080;
+            border-radius: 15px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(13deg, #ffffff 14%, #008080 51%);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+            border-radius: 15px;
+            box-shadow: inset 7px 10px 30px #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="settings">
+        <div id="preview1">
+            <canvas id="c"></canvas>
+            <p id="preview2p">&#128393;</p>
+        </div>
+
+        <div id="preview2">
+            <p id="preview2p">&#128393;</p>
+        </div>
+    </div>
+    <div id="highscoreList">
+        <div id="positioning">
+            <h1>Highscorelist</h1>
+            <div id="reset">
+                <h1>&#128465;</h1>
+            </div>
+        </div>
+        <main>
+            <div id="result"></div>
+        </main>
+        <button id="again" onclick="startGame()">Start game</button>
+    </div>
+
+    <div id="previewSpaceship">
+        <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
+                src="spaceship/standard/scene.png"></div>
+        <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
+                src="spaceship/deathrow/scene.png"></div>
+        <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
+                src="spaceship/graySpaceship/scene.png"></div>
+        <div class="box"><img onclick="whichModel(this), togglePreviewSpaceShipNav()"
+                src="spaceship/paperPlane/scene.png"></div>
+        <button class="goBack" onclick="togglePreviewSpaceShipNav()">&#9665;</button>
+    </div>
+
+    <div id="previewBackground">
+        <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
+                src="background/standard/background.jpg"></div>
+        <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
+                src="background/galaxy/background.jpg"></div>
+        <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
+                src="background/earth/background.jpg"></div>
+        <div class="box"><img onclick="whichBackground(this), togglePreviewBackgroundNav()"
+                src="background/tunnel/background.jpg"></div>
+        <button class="goBack" onclick="togglePreviewBackgroundNav()">&#9665;</button>
+    </div>
+
+    <button class="goBack" onclick="window.location.replace('index.html')">&#x2302;</button>
+
+
+    <div id="color">
+        <p id="colorModePointer">Change to darkmode &#129122;</p>
+        <button id="colorMode" onclick="darkOrLightMode()">&#11119;</button>
+    </div>
+
+    <button id="speaker">&#128362; (M)</button>
+    <input type="range" id="speakerSlider" name="speaker" min="0" max="1" step="0.01" class="speakerSliderNotDropped"
+        value="1">
+    <label id="label" for="speaker">100%</label>
+
+    <script>
+        function startGame() {
+            window.location.replace('game.html');
+            sessionStorage.volume = JSON.stringify(slider.value);
+            sessionStorage.mute = JSON.stringify(mute);
+        }
+
+        /**
+         * Darkmode
+        */
+        let colorModePointer = document.querySelector('#colorModePointer');
+        let currentColor = '';
+
+        let mute;
+        try {
+            mute = JSON.parse(sessionStorage.mute);
+        } catch {
+            mute = false;
+        }
+
+        let speaker = document.querySelector('#speaker');
+        let label = document.querySelector('#label');
+        let slider = document.querySelector('#speakerSlider');
+
+        if (sessionStorage.volume != undefined) {
+            slider.value = JSON.parse(sessionStorage.volume);
+            label.innerHTML = Math.round(slider.value * 100) + '%';
+        }
+
+        slider.addEventListener('input', () => {
+            label.innerHTML = Math.round(slider.value * 100) + '%';
+        });
+
+        if (mute) {
+            speaker.innerHTML = '&#128360;  (M)';
+        }
+
+        speaker.addEventListener('click', () => { toggleSound() });
+
+        function toggleSound() {
+            if (speaker.innerHTML == '🕪 (M)') {
+                speaker.innerHTML = '🕨 (M)';
+                mute = true;
+                slider.value = 0;
+                label.innerHTML = '0%';
+            } else if (speaker.innerHTML == '🕨 (M)') {
+                speaker.innerHTML = '🕩 (M)';
+                mute = false;
+                slider.value = 0.5;
+                label.innerHTML = '50%';
+            } else {
+                speaker.innerHTML = '🕪 (M)';
+                mute = false;
+                slider.value = 1;
+                label.innerHTML = '100%';
+            }
+        }
+
+        if (sessionStorage.color !== undefined) {
+            currentColor = JSON.parse(sessionStorage.color);
+        } else {
+            currentColor = 'white';
+        }
+
+        if (currentColor == 'black') {
+            document.body.style.backgroundColor = 'rgb(72,72,72)';
+            colorModePointer.style.color = 'white';
+            colorModePointer.innerHTML = 'Change to lightmode &#129122;';
+            document.body.style.color = 'white';
+        }
+
+        function darkOrLightMode() {
+            if (currentColor == 'white') {
+                currentColor = 'black';
+                document.body.style.backgroundColor = 'rgb(72,72,72)';
+                document.body.style.color = 'white';
+                colorModePointer.innerHTML = 'Change to lightmode &#129122;';
+                colorModePointer.style.color = 'white';
+                sessionStorage.color = JSON.stringify(currentColor);
+            } else {
+                currentColor = 'white';
+                sessionStorage.color = JSON.stringify(currentColor);
+                window.location.reload();
+            }
+        }
+
+        document.onkeydown = keyDownListener;
+
+        function keyDownListener(e) {
+            if (e.keyCode == 77) {
+                toggleSound();
+            }
+        }
+
+        /**
+         * Daten werden aus localStorage geladen und für spätere Verwendung gespeichert
+        */
+        let players = JSON.parse(localStorage.players);
+        let currentUser = JSON.parse(localStorage.currentUser);
+        let playerInArray;
+        let playerInArrayNumber;
+
+        for (let i = players.length - 1; i >= 0; i--) {
+            if (players[i].name == currentUser) {
+                playerInArray = players[i];
+                playerInArrayNumber = i;
+            }
+        }
+
+        /**
+         * Bei Aufruf wird aus dem source des Bildes der Pfad berechnet und gespeichert, der später im Spiel verwendet wird
+        */
+        function whichModel(imObj) {
+            let path = String(imObj.src);
+            let begin = path.search('spaceship')
+            path = path.slice(begin, path.length - 9);
+            players[playerInArrayNumber].spaceshipDesign = path;
+            localStorage.players = JSON.stringify(players);
+        }
+
+
+
+        /**
+         * Bei Aufruf wird aus dem source des Bildes der Pfad berechnet und gespeichert, der später im Spiel verwendet wird
+        */
+        function whichBackground(imObj) {
+            let path = String(imObj.src);
+            let begin = path.search('background')
+            path = path.slice(begin, path.length - 14);
+            players[playerInArrayNumber].backgroundDesign = path;
+            localStorage.players = JSON.stringify(players);
+        }
+
+
+
+        /**
+         * Bei Aufruf wird das Fenster zur Auswahl des Raumschiffes angezeigt
+        */
+        function togglePreviewSpaceShipNav() {
+            if (previewSpaceship.style.width == '100vw') {
+                window.location.reload();
+            } else {
+                previewSpaceship.style.width = '100vw';
+            }
+        }
+
+
+
+        /**
+         * Bei Aufruf wird das Fenster zur Auswahl des Hintergrundes angezeigt
+        */
+        function togglePreviewBackgroundNav() {
+            if (previewBackground.style.width == '100vw') {
+                window.location.reload();
+            } else {
+                previewBackground.style.width = '100vw';
+            }
+        }
+    </script>
+
+    <script src="three.js"></script>
+    <script type="module" src="/GLTFLoader.js"></script>
+    <script type="module">
+
+        let preview1 = document.getElementById('preview1');
+        let preview2 = document.getElementById('preview2');
+        let result = document.getElementById('result');
+        let previewSpaceship = document.getElementById('previewSpaceship');
+        let previewBackground = document.getElementById('previewBackground');
+        let reset = document.querySelector('#reset')
+
+        preview1.addEventListener('click', () => { togglePreviewSpaceShipNav() });
+        preview2.addEventListener('click', () => { togglePreviewBackgroundNav() });
+
+        reset.addEventListener('click', () => { resetFunction() });
+
+
+        /**
+         * Daten werden aus localStorage geladen und für spätere Verwendung gespeichert
+        */
+        let players = JSON.parse(localStorage.players);
+        let currentUser = JSON.parse(localStorage.currentUser);
+        let playerInArray;
+        let playerInArrayNumber;
+
+
+        /**
+         * Sortieren der Spieler nach Highscore
+        */
+        players = sort(players);
+        function sort(inputArr) {
+            let len = inputArr.length - 1;
+            let swapped;
+            do {
+                swapped = false;
+                for (let i = 0; i < len; i++) {
+                    if (inputArr[i].counter > inputArr[i + 1].counter) {
+                        let tmp = inputArr[i];
+                        inputArr[i] = inputArr[i + 1];
+                        inputArr[i + 1] = tmp;
+                        swapped = true;
+                    }
+                }
+            } while (swapped);
+            return inputArr;
+        };
+
+
+
+        /**
+         * Ausgeben der Highscores
+        */
+        for (let i = players.length - 1; i >= 0; i--) {
+            if (players[i].name == currentUser) {
+                result.innerHTML += '<p id="current">' + players[i].name + ': ' + players[i].counter + '</p>';
+                playerInArray = players[i];
+                playerInArrayNumber = i;
+            } else {
+                result.innerHTML += '<p>' + players[i].name + ': ' + players[i].counter + '</p>';
+            }
+        }
+        localStorage.players = JSON.stringify(players);
+
+        preview2.innerHTML += `<img id="previewImg" src="${playerInArray.backgroundDesign}/background.jpg">`;
+        let picture = document.getElementById('previewImg');
+        let can = document.getElementById('c');
+
+
+
+        /**
+         * Canvas wird nach der Größe des Vorschaubildes skaliert (1. Beim laden 2. Beim ändern der Größe des Fensters)
+        */
+        window.addEventListener('resize', function () {
+            can.style.height = `${picture.offsetHeight}px`;
+            can.style.width = `${picture.offsetWidth}px`;
+        });
+
+        window.addEventListener('load', function () {
+            can.style.height = `${picture.offsetHeight}px`;
+            can.style.width = `${picture.offsetWidth}px`;
+        });
+
+
+
+        /**
+         * Bei Aufruf wird das Fenster zur Auswahl des Raumschiffes angezeigt
+        */
+        function togglePreviewSpaceShipNav() {
+            if (previewSpaceship.style.width == '100vw') {
+                previewSpaceship.style.width = '0vw';
+            } else {
+                previewSpaceship.style.width = '100vw';
+            }
+        }
+
+
+        /**
+         * Bei Aufruf wird das Fenster zur Auswahl des Hintergrundes angezeigt
+        */
+        function togglePreviewBackgroundNav() {
+            if (previewSpaceship.style.width == '100vw') {
+                previewBackground.style.width = '0vw';
+            } else {
+                previewBackground.style.width = '100vw';
+            }
+        }
+
+
+        /**
+         * Bei Aufruf wird der localstorage gelöscht und man wird zur Startseite umgeleitet
+        */
+        function resetFunction() {
+            if (confirm('Are you sure you want to delete all saved Scores?')) {
+                localStorage.clear();
+                window.location.replace('index.html');
+            }
+        }
+
+
+        /**
+         * Das Model aus dem localStorage geladen
+        */
+        let currentModel = JSON.parse(localStorage.players);
+        currentModel = currentModel[playerInArrayNumber].spaceshipDesign;
+        load3dModel('c', `${currentModel}/scene.gltf`);
+
+        import { GLTFLoader } from "./GLTFLoader.js";
+
+        function load3dModel(whichCanvas, path) {
+            /*3d Modelle (THREE JS)*/
+            let canvas = document.getElementById(whichCanvas);
+
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(
+                75,
+                canvas.offsetWidth / canvas.offsetHeight,
+                0.01,
+                1000
+            );
+            let renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+            renderer.setSize(500, 500);
+
+            var loader = new GLTFLoader();
+
+
+            /**
+             * Raumschiff laden
+            */
+            var desiredScaleSpaceShip = canvas.offsetHeight / 3.5;
+            var scaleV3SpaceShip = new THREE.Vector3().setScalar(desiredScaleSpaceShip);
+
+            var spaceship;
+            loader.load(path, function (gltf) {
+                spaceship = gltf.scene;
+
+                var box = new THREE.Box3();
+                box.setFromObject(spaceship);
+
+                var size = new THREE.Vector3();
+                box.getSize(size);
+
+                var center = new THREE.Vector3();
+                box.getCenter(center);
+
+                var scaleTemp = new THREE.Vector3().copy(scaleV3SpaceShip).divide(size);
+
+                var scale = Math.min(scaleTemp.x, Math.min(scaleTemp.y, scaleTemp.z));
+                spaceship.scale.setScalar(scale);
+
+                spaceship.position.sub(center.multiplyScalar(scale));
+                spaceship.position.z = -130;
+                spaceship.rotation.y = 180;
+
+                scene.add(spaceship);
+            });
+
+
+            /**
+             * Kameraposition
+            */
+            camera.position.set(0, 50, 0);
+            camera.rotation.x = -0.3;
+
+
+            /**
+             * Transparenter Hintergrund
+            */
+            renderer.setClearColor(0xffffff, 0);
+
+
+            /**
+             * Lciht
+            */
+            var light = new THREE.HemisphereLight(0xffeeb1, 0x080820, 4);
+            scene.add(light);
+
+
+            /**
+             * Anpassung der Farben des Modells
+            */
+            renderer.toneMapping = THREE.ReinhardToneMapping;
+            renderer.toneMappingExposure = 2.8;
+
+            function animate() {
+                try {
+                    requestAnimationFrame(animate);
+
+                    spaceship.rotation.y += 0.01;
+
+                    renderer.render(scene, camera);
+                } catch {
+
+                }
+
+            }
+            animate();
+        }
+    </script>
+
+</body>
+
+</html>
